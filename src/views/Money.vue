@@ -16,8 +16,8 @@
     import Notes from '@/components/Money/Notes.vue';
     import Tags from '@/components/Money/Tags.vue';
     import { Component, Watch } from 'vue-property-decorator'; 
-    import recordListModel from '@/models/recordList'
-    import tagListModel from '@/models/tagList'
+    import recordListModel from '@/models/recordListModel'
+    import tagListModel from '@/models/tagListModel'
     //ts中引入js
     // const {model} = require('@/model.js');
     // console.log(model)
