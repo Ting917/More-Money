@@ -1,6 +1,6 @@
 <template>
     <Layout class-prefix="layout">
-        <!-- {{recordList}} -->
+        {{record}}
         <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
         <Types :value.sync="record.type" />
         <div class="notes">
