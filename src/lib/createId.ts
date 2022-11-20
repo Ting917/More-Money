@@ -2,6 +2,7 @@
 
  function createId() {
     id++
+    window.localStorage.setItem('_idMax',id.toString())
     return id
  }
 
