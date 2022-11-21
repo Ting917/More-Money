@@ -9,6 +9,7 @@ const recordListModel ={
             // 深拷贝
     record2.createdAt = new Date();
     this.data.push(record2);
+    this.save();
     },
     fetch() {
         this.data = JSON.parse(window.localStorage.getItem('localStorageKeyName') || '[]') as RecordItem[];
