@@ -5,36 +5,38 @@
         <div class="notes">
         <FormItem field-name="备注" placeholder="在这里输入备注" @update:value="onUpdateNotes"/>
         </div>
-        <Tags :data-source.sync="tags" @update:value="onUpdateTags"/> 
+        <Tags /> 
     </Layout>
 </template>
 
 <script lang="ts">
-    import Vue from 'vue';
+    import Vue, { computed } from 'vue';
 
     import NumberPad from '@/components/Money/NumberPad.vue';
     import Types from '@/components/Money/Types.vue';
     import FormItem from '@/components/Money/FormItem.vue';
     import Tags from '@/components/Money/Tags.vue';
     import { Component } from 'vue-property-decorator';
-    import store from '@/store/index2';
+    // import store from '@/store/index2';
     //ts中引入js
     // const {model} = require('@/model.js');
     // console.log(model)
 
     
     @Component({
-        components: { Tags, FormItem, Types, NumberPad }
+        components: { Tags, FormItem, Types, NumberPad },
+        computed: {
+        recordList(){
+            return this.$store.state.recordList;
+        } 
+        }
     })
     export default class Money extends Vue{
-        tags = store.tagList;
-        recordList = store.recordList;
         record: RecordItem = {
             tags: [], notes: '', type: '-', amount: 0
         };
-        
-        onUpdateTags(value: string[]) {
-            this.record.tags = value;
+        created(){
+            this.$store.commit('fetchRecords')
         }
         onUpdateNotes(value: string) {
             this.record.notes = value;
@@ -43,7 +45,7 @@
             this.record.amount = parseFloat(value);
         }
         saveRecord(){
-            store.createRecord(this.record);
+            this.$store.commit('createRecord', this.record);
         }
     }
 </script>
