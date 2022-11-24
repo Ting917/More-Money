@@ -10,21 +10,21 @@
 </template>
 
 <script lang="ts">
-// import store from "@/store/index2";
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
 @Component({
     computed: {
         tagList(){
-            //TODO
-        // return this.$store.fetchTags();
-        return []
+        return this.$store.state.tagList;
         }
     }
 })
     export default class Tags extends Vue {
         selectedTags: string[] = [];
 
+        created(){ 
+            this.$store.commit('fetchTags');
+        }
         toggle(tag: string){
             const index = this.selectedTags.indexOf(tag);
             if(index >= 0){
@@ -34,11 +34,10 @@ import { Component } from "vue-property-decorator";
             }
             this.$emit('update:value',this.selectedTags);
         }
-        create(tag: string){
+        create(){
             const name = window.prompt('请输入标签名');
             if(!name){return window.alert('便签名不能为空');}
-            // TODO
-            // this.$store.createTag(name);
+            this.$store.commit('createTag', name);
         }
     }
 </script>
