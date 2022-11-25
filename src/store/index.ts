@@ -34,6 +34,9 @@ const store = new Vuex.Store({
           window.alert('标签名重复');
           return 'duplicated';
         }
+        if(name === ''){
+          return 
+        }
         const id = createId().toString();
         state.tagList.push({id, name: name});
         store.commit('saveTags');

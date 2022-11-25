@@ -22,9 +22,9 @@
     @Component({
         components: { Tags, FormItem, Types, NumberPad },
         computed: {
-        recordList(){
+          recordList(){
             return this.$store.state.recordList;
-        } 
+          } 
         }
     })
     export default class Money extends Vue{
