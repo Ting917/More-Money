@@ -37,8 +37,9 @@ import Button from '@/components/Button.vue';
         }
       }
       update(name: string) {
+        console.log(this.currentTag)
         if(this.currentTag) {
-        this.$store.commit('updateTag', {id: this.currentTag.id, name})
+        this.$store.commit('updateTag', {id: this.currentTag.id, name: name})
         }
       }
       remove() {
