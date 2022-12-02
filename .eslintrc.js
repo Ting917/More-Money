@@ -17,9 +17,11 @@ module.exports = {
     // 关闭名称校验
     'vue/multi-word-component-names': "off",
   },
-  "globals":{  //与上方的rules是同级的
+  "globals":{
     "__WebpackModuleApi": true,
-    "RecordItem": true
+    "RecordItem": true,
+    "Tag": true,
+    "RootState": true,
   },
   overrides: [
     {
