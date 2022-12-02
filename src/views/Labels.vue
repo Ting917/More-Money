@@ -11,7 +11,6 @@
                 <Button class="createTag" @click="createTag">新建标签</Button>
             </div>
         </Layout>
-        <Nav />
     </div>
     
 </template>
